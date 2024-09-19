@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import degreeRouter from './routes/degree.route.js';
 import commetRouter from './routes/comment.route.js';
+import userRouter from './routes/user.router.js';
 
 import file from 'fs';
 dotenv.config();
@@ -40,6 +41,7 @@ app.use('*', (req, res, next) => {
 });
 app.use('/api/v1/degree', degreeRouter);
 app.use('/api/v1/comment', commetRouter);
+app.use('/api/v1/user', userRouter);
 mongoose
 	.connect(MongoUrl)
 	.then(() => {
