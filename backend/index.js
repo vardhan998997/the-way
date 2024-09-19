@@ -1,4 +1,3 @@
-
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
@@ -7,6 +6,7 @@ import cors from 'cors';
 import degreeRouter from './routes/degree.route.js';
 import commetRouter from './routes/comment.route.js';
 import userRouter from './routes/user.router.js';
+import contactRouter from './routes/contact.route.js';
 
 import file from 'fs';
 dotenv.config();
@@ -22,8 +22,7 @@ app.use(
 const MongoUrl = process.env.STRING;
 app.get('/', (req, res) => {
 	res.send('Home page');
-})
-//routes
+});
 app.use('*', (req, res, next) => {
 	const logEntry = `host:${req.hostname}  method:${req.method} route:${
 		req.originalUrl
@@ -40,9 +39,11 @@ app.use('*', (req, res, next) => {
 	);
 	next();
 });
+//routes
 app.use('/api/v1/degree', degreeRouter);
 app.use('/api/v1/comment', commetRouter);
 app.use('/api/v1/user', userRouter);
+app.use('/api/v1/contact', contactRouter);
 mongoose
 	.connect(MongoUrl)
 	.then(() => {
