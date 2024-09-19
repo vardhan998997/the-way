@@ -1,3 +1,4 @@
+
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
@@ -21,7 +22,7 @@ app.use(
 const MongoUrl = process.env.STRING;
 app.get('/', (req, res) => {
 	res.send('Home page');
-});
+})
 //routes
 app.use('*', (req, res, next) => {
 	const logEntry = `host:${req.hostname}  method:${req.method} route:${
