@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 import bodyParser from "body-parser"
 import dotenv from "dotenv"
 import degreeRouter from "./routes/degree.route.js"
+
 dotenv.config()
 const app=express()
 app.use(express.json())
